@@ -816,7 +816,7 @@ function ProjectMediaCard({ project, viewLabel }: { project: WorkProject; viewLa
 
 export default function App() {
   const [dark, setDark] = useState(false)
-  const [lang, setLang] = useState<Lang>('tr')
+  const [lang, setLang] = useState<Lang>('en')
   const [menuOpen, setMenuOpen] = useState(false)
 
   const t = translations[lang]
