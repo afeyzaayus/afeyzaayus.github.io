@@ -23,8 +23,13 @@ const translations = {
     about: {
       label: 'About',
       heading: 'Systems, software,\nand autonomy.',
-      body: 'I\'m a fourth-year Computer Engineering student at Gebze Technical University, working at the intersection of systems programming, backend development, and applied engineering. I\'ve spent the last two years building UAV software, OCR-based systems, and mathematical models. This term, I\'m taking Introduction to Digital Integrated Circuits, Symbolic Computation, and Object Oriented Analysis and Design.',
-      body2: 'I\'m currently a Candidate Engineer at TUSMEC, working on swarm robotics simulation and digital twins, and I contribute to the TEKNOFEST UAV Competition as part of the software team. I\'m passionate about AI and always looking for the next hard problem to solve. I believe in keeping only what\'s essential, and cutting out everything else. Outside of work, I like going for walks, attending concerts, learning to play electric guitar, and volunteering with LÖSEV (Foundation for Children with Leukemia) on social responsibility initiatives.',
+      paragraphs: [
+        'I\'m a fourth-year Computer Engineering student at Gebze Technical University, working at the intersection of systems programming, backend development, and applied engineering. I\'ve spent the last two years building UAV software, OCR-based systems, and mathematical models. I\'m passionate about AI and always looking for the next hard problem to solve.',
+        'This term, I\'m taking Introduction to Digital Integrated Circuits, Symbolic Computation, and Object Oriented Analysis and Design.',
+        'I\'m currently a Candidate Engineer at TUSMEC, working on swarm robotics simulation and digital twins, and I contribute to the TEKNOFEST UAV Competition as part of the software team.',
+        'I believe in keeping only what\'s essential, and cutting out everything else.',
+        'Outside of work, I like going for walks, attending concerts, learning to play electric guitar, and volunteering with LÖSEV (Foundation for Children with Leukemia) on social responsibility initiatives.',
+      ],
       available: 'Open to opportunities',
     },
     work: {
@@ -238,8 +243,13 @@ const translations = {
     about: {
       label: 'Hakkımda',
       heading: 'Sistemler, yazılım\nve otonomi.',
-      body: 'Gebze Teknik Üniversitesi\'nde dördüncü sınıf Bilgisayar Mühendisliği öğrencisiyim; sistem programlama, arka uç geliştirme ve uygulamalı mühendisliğin kesiştiği noktada çalışıyorum. Son iki yıldır İHA yazılımları, OCR tabanlı sistemler ve matematiksel modeller üzerinde çalışıyorum. Bu dönem Introduction to Digital Integrated Circuits, Symbolic Computation ve Object Oriented Analysis and Design derslerini alıyorum.',
-      body2: 'Şu anda TUSMEC\'te sürü robotiği simülasyonu ve dijital ikizler üzerinde çalışan bir Aday Mühendis\'im, ayrıca TEKNOFEST İHA Yarışması\'nda yazılım takımı üyesi olarak yer alıyorum. Yapay zekaya tutkuyla bağlıyım ve her zaman çözülecek yeni bir problem arıyorum. Sadece gerekli olanı bırakmaya, gereksiz her şeyi çıkarmaya inanıyorum. İş dışında yürüyüş yapıyor, konserlere gidiyor, elektrogitar öğrenmeye çalışıyor ve LÖSEV gönüllüsü olarak sosyal sorumluluk projelerinde yer alıyorum.',
+      paragraphs: [
+        'Gebze Teknik Üniversitesi\'nde dördüncü sınıf Bilgisayar Mühendisliği öğrencisiyim; sistem programlama, arka uç geliştirme ve uygulamalı mühendisliğin kesiştiği noktada çalışıyorum. Son iki yıldır İHA yazılımları, OCR tabanlı sistemler ve matematiksel modeller geliştiriyorum. Yapay zekaya tutkuyla bağlıyım ve her zaman çözülecek yeni bir zorlu problem arıyorum.',
+        'Bu dönem Introduction to Digital Integrated Circuits, Symbolic Computation ve Object Oriented Analysis and Design derslerini alıyorum.',
+        'Şu anda TUSMEC\'te sürü robotiği simülasyonu ve dijital ikizler üzerinde çalışan bir Aday Mühendis\'im, ayrıca TEKNOFEST İHA Yarışması\'nda yazılım takımının bir parçası olarak katkı sağlıyorum.',
+        'Sadece gerekli olanı bırakmaya, gereksiz her şeyi çıkarmaya inanıyorum.',
+        'İş dışında yürüyüş yapmayı, konserlere gitmeyi, elektro gitar çalmayı öğrenmeyi seviyorum; ayrıca LÖSEV (Lösemili Çocuklar Vakfı) ile sosyal sorumluluk projelerinde gönüllü olarak yer alıyorum.',
+      ],
       available: 'Fırsatlara açığım',
     },
     work: {
@@ -1135,12 +1145,20 @@ export default function App() {
             </h2>
           </div>
           <div style={{ paddingTop: '3.5rem' }}>
-            <p style={{ fontSize: '1rem', color: 'var(--muted-foreground)', marginBottom: '1.25rem', lineHeight: 1.8, fontWeight: 300 }}>
-              {t.about.body}
-            </p>
-            <p style={{ fontSize: '1rem', color: 'var(--muted-foreground)', marginBottom: '2rem', lineHeight: 1.8, fontWeight: 300 }}>
-              {t.about.body2}
-            </p>
+            {t.about.paragraphs.map((paragraph, i) => (
+              <p
+                key={i}
+                style={{
+                  fontSize: '1rem',
+                  color: 'var(--muted-foreground)',
+                  marginBottom: i === t.about.paragraphs.length - 1 ? '2rem' : '1.25rem',
+                  lineHeight: 1.8,
+                  fontWeight: 300,
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4CAF50' }} />
               <span style={{ fontSize: '0.8rem', letterSpacing: '0.04em', color: 'var(--muted-foreground)' }}>{t.about.available}</span>
